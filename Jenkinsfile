@@ -1,5 +1,11 @@
 pipeline {
   agent { label 'docker' }
+  options {
+    buildDiscarder(logRotator(numToKeepStr: '5'))
+  }
+  triggers {
+    cron('@daily')
+  }
   stages {
     stage('Build') {
       steps {
@@ -12,8 +18,10 @@ pipeline {
         branch 'master'
       }
       steps {
-        sh 'docker push brightbox/terraform:latest'
-	sh 'docker push brightbox/cli:latest'
+	withDockerRegistry([ credentialsId: "6533de7e-17a4-4376-969b-e86bc1e4f903", url: "" ]) {
+          sh 'docker push brightbox/terraform:latest'
+	  sh 'docker push brightbox/cli:latest'
+	}
       }
     }
   }
