@@ -3,8 +3,8 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh "docker build -f "Dockerfile-terraform" -t brightbox/terraform:latest ."
-        sh "docker build -f "Dockerfile-cli" -t brightbox/cli:latest ."
+        sh 'docker build -f "Dockerfile-terraform" -t brightbox/terraform:latest .'
+        sh 'docker build -f "Dockerfile-cli" -t brightbox/cli:latest .'
       }
     }
     stage('Publish') {
@@ -12,8 +12,8 @@ pipeline {
         branch 'master'
       }
       steps {
-        sh "docker push brightbox/terraform:latest"
-	sh "docker push brightbox/cli:latest"
+        sh 'docker push brightbox/terraform:latest'
+	sh 'docker push brightbox/cli:latest'
       }
     }
   }
