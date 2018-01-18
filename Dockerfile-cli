@@ -1,0 +1,6 @@
+FROM ruby:slim
+MAINTAINER support@brightbox.co.uk
+
+RUN gem install brightbox-cli
+
+ENTRYPOINT ["/usr/local/bundle/bin/brightbox"]

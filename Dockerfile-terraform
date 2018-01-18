@@ -1,0 +1,13 @@
+FROM hashicorp/terraform
+MAINTAINER support@brightbox.co.uk
+
+ENV TERRAFORM_BRIGHTBOX_PLUGIN_VERSION=0.1.3
+
+RUN curl -LO https://github.com/brightbox/terraform-provider-brightbox/releases/download/v${TERRAFORM_BRIGHTBOX_PLUGIN_VERSION}/terraform-provider-brightbox_${TERRAFORM_BRIGHTBOX_PLUGIN_VERSION}_linux_amd64.tar.gz && \
+    curl -L https://github.com/brightbox/terraform-provider-brightbox/releases/download/v${TERRAFORM_BRIGHTBOX_PLUGIN_VERSION}/terraform-provider-brightbox_checksums.txt | \
+    grep linux_amd64.tar.gz | \
+    sha256sum -cs
+RUN tar xzvf terraform-provider-brightbox_${TERRAFORM_BRIGHTBOX_PLUGIN_VERSION}_linux_amd64.tar.gz && \
+    mv -v terraform-provider-brightbox /bin/terraform-provider-brightbox_v${TERRAFORM_BRIGHTBOX_PLUGIN_VERSION} 
+
+ENTRYPOINT ["/bin/terraform"]
