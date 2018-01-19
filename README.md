@@ -6,7 +6,7 @@ to access the Brightbox cloud.
 * Brightbox Cloud CLI
 * Terraform
 
-The docker containers are built once a week, ensuring you always have
+The docker containers are built once a day, ensuring you always have
 the latest tools available. Just replace your usual command line with
 the equivalent `docker run` command.
 
