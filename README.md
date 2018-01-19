@@ -6,11 +6,11 @@ to access the Brightbox cloud.
 * Brightbox Cloud CLI
 * Terraform
 
-The docker ontainers are built once a week, ensuring you always have
+The docker containers are built once a week, ensuring you always have
 the latest tools available. Just replace your usual command line with
 the equivalent `docker run` command.
 
-##### Brightbox Cloud CLI Usage
+### Brightbox Cloud CLI Usage
 
 [Brightbox Cloud CLI](https://www.brightbox.com/docs/guides/cli/)
 requires a working directory which can store the config. You can map
@@ -29,7 +29,7 @@ docker run -it -v ~/.brightbox:/root/.brightbox brightbox/cli accounts
 docker run -it -v ~/.brightbox:/root/.brightbox brightbox/cli server create img-6xysw
 ```
 
-#### Terraform Usage
+### Terraform Usage
 
 The [Terraform](https://www.brightbox.com/docs/guides/terraform/getting-started/) container includes the terraform tool and the Brightbox
 provider plugin, so you're ready to go with no installation. Run
