@@ -1,7 +1,7 @@
 # Brightbox Docker Containers
 
 This repository automatically builds docker containers containing tools
-to access the Brightbox cloud.
+to access Brightbox Cloud.
 
 * Brightbox Cloud CLI
 * Terraform
