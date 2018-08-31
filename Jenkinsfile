@@ -1,5 +1,5 @@
 pipeline {
-  agent { label 'docker' }
+  agent { label 'slave_node_01' }
   options {
     buildDiscarder(logRotator(numToKeepStr: '5'))
   }
@@ -9,8 +9,8 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh 'docker build -f "Dockerfile-terraform" -t brightbox/terraform:latest .'
-        sh 'docker build -f "Dockerfile-cli" -t brightbox/cli:latest .'
+        sh 'docker build -f "Dockerfile-terraform" -t sandyverden/terraform:latest .'
+        sh 'docker build -f "Dockerfile-cli" -t sandyverden/cli:latest .'
       }
     }
     stage('Publish') {
@@ -18,9 +18,9 @@ pipeline {
         branch 'master'
       }
       steps {
-	withDockerRegistry([ credentialsId: "6533de7e-17a4-4376-969b-e86bc1e4f903", url: "" ]) {
-          sh 'docker push brightbox/terraform:latest'
-	  sh 'docker push brightbox/cli:latest'
+	withDockerRegistry([ credentialsId: "36839328-5533-49e1-8a52-be13c6ba0b59", url: "" ]) {
+          sh 'docker push sandyverden/terraform:latest'
+	  sh 'docker push sandyverden/cli:latest'
 	}
       }
     }
